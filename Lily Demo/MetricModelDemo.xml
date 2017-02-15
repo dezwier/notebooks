@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_3" version="4.3">
+	<Header>
+		<Application name="JPMML-SkLearn" version="1.2.5"/>
+		<Timestamp>2017-02-14T09:09:19Z</Timestamp>
+	</Header>
+	<DataDictionary>
+		<DataField name="monthlyIncomeReal" optype="continuous" dataType="double"/>
+		<DataField name="flagStudent" optype="continuous" dataType="double"/>
+		<DataField name="flagRetired" optype="continuous" dataType="double"/>
+		<DataField name="nbrChildren" optype="continuous" dataType="double"/>
+		<DataField name="flagHouseOwner" optype="continuous" dataType="double"/>
+		<DataField name="flagHomeTenant" optype="continuous" dataType="double"/>
+		<DataField name="flagValueProperty" optype="continuous" dataType="double"/>
+		<DataField name="flagLandlord" optype="continuous" dataType="double"/>
+		<DataField name="flagWealthyRegion" optype="continuous" dataType="double"/>
+		<DataField name="nbrPropertiesOwned" optype="continuous" dataType="double"/>
+		<DataField name="totalAssets" optype="continuous" dataType="double"/>
+		<DataField name="age" optype="continuous" dataType="double"/>
+		<DataField name="flagElitesMember" optype="continuous" dataType="double"/>
+		<DataField name="flagSelfSufficientsMember" optype="continuous" dataType="double"/>
+		<DataField name="flagNewWorldlyAdoptersMember" optype="continuous" dataType="double"/>
+		<DataField name="flagSafetySeekersMember" optype="continuous" dataType="double"/>
+		<DataField name="flagTraditionalistsMember" optype="continuous" dataType="double"/>
+		<DataField name="flagUpwardlyMobilesMember" optype="continuous" dataType="double"/>
+		<DataField name="title_Dr." optype="continuous" dataType="double"/>
+		<DataField name="title_Mr." optype="continuous" dataType="double"/>
+		<DataField name="title_Mrs." optype="continuous" dataType="double"/>
+		<DataField name="title_Ms." optype="continuous" dataType="double"/>
+		<DataField name="gender_female" optype="continuous" dataType="double"/>
+		<DataField name="gender_male" optype="continuous" dataType="double"/>
+		<DataField name="lifestage_Family Life" optype="continuous" dataType="double"/>
+		<DataField name="lifestage_Mature Years" optype="continuous" dataType="double"/>
+		<DataField name="lifestage_Younger Years" optype="continuous" dataType="double"/>
+		<DataField name="lifestage_Younger Years Fiscal Fledlings" optype="continuous" dataType="double"/>
+		<DataField name="maritalStatus_Divorced" optype="continuous" dataType="double"/>
+		<DataField name="maritalStatus_In registered partnership" optype="continuous" dataType="double"/>
+		<DataField name="maritalStatus_Married" optype="continuous" dataType="double"/>
+		<DataField name="maritalStatus_Single (never in legal unions)" optype="continuous" dataType="double"/>
+		<DataField name="maritalStatus_Widowed" optype="continuous" dataType="double"/>
+		<DataField name="education_associate" optype="continuous" dataType="double"/>
+		<DataField name="education_bachelor" optype="continuous" dataType="double"/>
+		<DataField name="education_doctoral" optype="continuous" dataType="double"/>
+		<DataField name="education_elementary" optype="continuous" dataType="double"/>
+		<DataField name="education_first-professional degree" optype="continuous" dataType="double"/>
+		<DataField name="education_master" optype="continuous" dataType="double"/>
+		<DataField name="education_secondary" optype="continuous" dataType="double"/>
+		<DataField name="resCountry_US" optype="continuous" dataType="double"/>
+		<DataField name="ageCategory_18-34" optype="continuous" dataType="double"/>
+		<DataField name="ageCategory_35-49" optype="continuous" dataType="double"/>
+		<DataField name="ageCategory_50 or older" optype="continuous" dataType="double"/>
+	</DataDictionary>
+	<RegressionModel functionName="regression">
+		<MiningSchema>
+			<MiningField name="monthlyIncomeReal" usageType="target"/>
+			<MiningField name="flagStudent"/>
+			<MiningField name="flagRetired"/>
+			<MiningField name="nbrChildren"/>
+			<MiningField name="flagHouseOwner"/>
+			<MiningField name="flagHomeTenant"/>
+			<MiningField name="flagValueProperty"/>
+			<MiningField name="flagLandlord"/>
+			<MiningField name="flagWealthyRegion"/>
+			<MiningField name="nbrPropertiesOwned"/>
+			<MiningField name="totalAssets"/>
+			<MiningField name="age"/>
+			<MiningField name="flagElitesMember"/>
+			<MiningField name="flagSelfSufficientsMember"/>
+			<MiningField name="flagNewWorldlyAdoptersMember"/>
+			<MiningField name="flagSafetySeekersMember"/>
+			<MiningField name="flagTraditionalistsMember"/>
+			<MiningField name="flagUpwardlyMobilesMember"/>
+			<MiningField name="title_Dr."/>
+			<MiningField name="title_Mr."/>
+			<MiningField name="title_Mrs."/>
+			<MiningField name="title_Ms."/>
+			<MiningField name="gender_female"/>
+			<MiningField name="gender_male"/>
+			<MiningField name="lifestage_Family Life"/>
+			<MiningField name="lifestage_Mature Years"/>
+			<MiningField name="lifestage_Younger Years"/>
+			<MiningField name="lifestage_Younger Years Fiscal Fledlings"/>
+			<MiningField name="maritalStatus_Divorced"/>
+			<MiningField name="maritalStatus_In registered partnership"/>
+			<MiningField name="maritalStatus_Married"/>
+			<MiningField name="maritalStatus_Single (never in legal unions)"/>
+			<MiningField name="maritalStatus_Widowed"/>
+			<MiningField name="education_associate"/>
+			<MiningField name="education_bachelor"/>
+			<MiningField name="education_doctoral"/>
+			<MiningField name="education_elementary"/>
+			<MiningField name="education_first-professional degree"/>
+			<MiningField name="education_master"/>
+			<MiningField name="education_secondary"/>
+			<MiningField name="resCountry_US"/>
+			<MiningField name="ageCategory_18-34"/>
+			<MiningField name="ageCategory_35-49"/>
+			<MiningField name="ageCategory_50 or older"/>
+		</MiningSchema>
+		<RegressionTable intercept="1763.4035914466758">
+			<NumericPredictor name="flagStudent" coefficient="4.2514666650591915"/>
+			<NumericPredictor name="flagRetired" coefficient="2.577811295004284"/>
+			<NumericPredictor name="nbrChildren" coefficient="-2.8789607677777735"/>
+			<NumericPredictor name="flagHouseOwner" coefficient="-49.422511045157414"/>
+			<NumericPredictor name="flagHomeTenant" coefficient="2.504016951456733"/>
+			<NumericPredictor name="flagValueProperty" coefficient="286.4325999266677"/>
+			<NumericPredictor name="flagLandlord" coefficient="78.42963157265159"/>
+			<NumericPredictor name="flagWealthyRegion" coefficient="207.00985377974757"/>
+			<NumericPredictor name="nbrPropertiesOwned" coefficient="72.83927928410395"/>
+			<NumericPredictor name="totalAssets" coefficient="0.007358141849601998"/>
+			<NumericPredictor name="age" coefficient="-0.03844201457585867"/>
+			<NumericPredictor name="flagElitesMember" coefficient="-317.7160567424498"/>
+			<NumericPredictor name="flagSelfSufficientsMember" coefficient="-109.84488165925305"/>
+			<NumericPredictor name="flagNewWorldlyAdoptersMember" coefficient="-28.705754087402628"/>
+			<NumericPredictor name="flagSafetySeekersMember" coefficient="59.684907160590186"/>
+			<NumericPredictor name="flagTraditionalistsMember" coefficient="0.5433941827924558"/>
+			<NumericPredictor name="flagUpwardlyMobilesMember" coefficient="113.85196244109247"/>
+			<NumericPredictor name="title_Dr." coefficient="-13.697781835149495"/>
+			<NumericPredictor name="title_Mr." coefficient="-4.266838056888401"/>
+			<NumericPredictor name="title_Mrs." coefficient="-14.773471078691003"/>
+			<NumericPredictor name="title_Ms." coefficient="-14.180403121824497"/>
+			<NumericPredictor name="gender_female" coefficient="-17.72853698709593"/>
+			<NumericPredictor name="gender_male" coefficient="-29.189957103124723"/>
+			<NumericPredictor name="lifestage_Family Life" coefficient="-549.9059960184437"/>
+			<NumericPredictor name="lifestage_Mature Years" coefficient="723.9954214218052"/>
+			<NumericPredictor name="lifestage_Younger Years" coefficient="123.71855286694161"/>
+			<NumericPredictor name="lifestage_Younger Years Fiscal Fledlings" coefficient="-344.7264723685046"/>
+			<NumericPredictor name="maritalStatus_Divorced" coefficient="0.11014372600919675"/>
+			<NumericPredictor name="maritalStatus_In registered partnership" coefficient="7.659789658828358"/>
+			<NumericPredictor name="maritalStatus_Married" coefficient="1.2677493639519815"/>
+			<NumericPredictor name="maritalStatus_Single (never in legal unions)" coefficient="5.967151999306659"/>
+			<NumericPredictor name="maritalStatus_Widowed" coefficient="-61.923328832578854"/>
+			<NumericPredictor name="education_associate" coefficient="-6.214582195928127"/>
+			<NumericPredictor name="education_bachelor" coefficient="-7.179854429116685"/>
+			<NumericPredictor name="education_doctoral" coefficient="16.4127468815733"/>
+			<NumericPredictor name="education_elementary" coefficient="-31.917319512734682"/>
+			<NumericPredictor name="education_first-professional degree" coefficient="-1.5269294715495136"/>
+			<NumericPredictor name="education_master" coefficient="-3.3312611632660323"/>
+			<NumericPredictor name="education_secondary" coefficient="-13.161294202212181"/>
+			<NumericPredictor name="resCountry_US" coefficient="-46.91849409146188"/>
+			<NumericPredictor name="ageCategory_18-34" coefficient="-19.71359809635692"/>
+			<NumericPredictor name="ageCategory_35-49" coefficient="-13.267284951361265"/>
+			<NumericPredictor name="ageCategory_50 or older" coefficient="-13.937611041757073"/>
+		</RegressionTable>
+	</RegressionModel>
+</PMML>
