@@ -1,0 +1,15 @@
+(714350, 'Before deleting anything')
+(264188, 'After deleting columns with less than 1000 non values')
+(414, 'After changing binary columns')
+(0, 'After deleting rows with any missing values')
+('title', array(['Mr.', 'Mrs.', 'Ms.', 'Dr.'], dtype=object))
+('gender', array(['male', 'female'], dtype=object))
+('lifestage', array(['Mature Years', 'Younger Years Fiscal Fledlings', 'Younger Years',
+       'Family Life'], dtype=object))
+('maritalStatus', array(['Married', 'Single (never in legal unions)',
+       'In registered partnership', 'Divorced', 'Widowed'], dtype=object))
+('education', array(['associate', 'bachelor', 'doctoral', 'master', 'secondary',
+       'elementary', 'first-professional degree'], dtype=object))
+('ageCategory', array(['50 or older', '35-49', '18-34'], dtype=object))
+0.958086111282
+0.957898036188
