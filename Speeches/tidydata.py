@@ -32,6 +32,8 @@ def textconverter(text):
     text = re.sub('\[(.*?)\]', '', text)            # Removes all [] parts
     text = re.sub('\((.*?)\)', '', text)            # Removes all () parts
     text = re.sub('\|', '', text)                   # Removes all |
+    text = text.lower()                      # Change text to lowercase
+    text = re.sub('[^(a-z)]| ', ' ', text)   # Change all not-text to spaces
     text = re.sub(' +',' ',text)                    # Remove all redundant spaces
     text = text.strip()                             # Remove outer whitespace
     return text
@@ -41,13 +43,13 @@ def textconverter(text):
 ######################################
 
 # Collect relevant data from the raw dataset
-conn = sqlite3.connect('rawdata.sqlite')
+conn = sqlite3.connect('/Users/desiredewaele/Google Drive/Datasets/rawdata.sqlite')
 conn.text_factory = str
 cur = conn.cursor()
 cur.execute('''SELECT text FROM Speeches ORDER BY id''')
         
 # Create a database for the tidy data
-conn_2 = sqlite3.connect('tidydata.sqlite')
+conn_2 = sqlite3.connect('/Users/desiredewaele/Google Drive/Datasets/tidydata.sqlite')
 conn_2.text_factory = str
 cur_2 = conn_2.cursor()
 cur_2.execute('''DROP TABLE IF EXISTS Speeches ''')
