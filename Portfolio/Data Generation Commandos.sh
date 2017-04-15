@@ -24,13 +24,13 @@ ssh financial-interactive-staging-v201
 screen -r Desiré
 
 /usr/lib/lily-demo/staging/scripts/data-generate-customers.py -n 50000 -o /disk1/current/ -m /usr/lib/lily-demo/staging/scripts/data-generate-model/
-/usr/lib/lily-demo/staging/scripts/data-generate-products.py  -o /disk1/current/ -m /usr/lib/lily-demo/staging/scripts/data-generate-model -c /disk1/current/CrmDataToFilter.csv 
+/usr/lib/lily-demo/staging/scripts/data-generate-productsv2.py  -o /disk1/current/ -m /usr/lib/lily-demo/staging/scripts/data-generate-model -c /disk1/current/CrmDataToFilter.csv 
 /usr/lib/lily-demo/staging/scripts/data-generate-account.py  -o /disk1/current/ -m /usr/lib/lily-demo/staging/scripts/data-generate-model -c /disk1/current/EntityDataAll.csv 
 /usr/lib/lily-demo/staging/scripts/data-generate-account_role.py  -o /disk1/current/ -m /usr/lib/lily-demo/staging/scripts/data-generate-model -c /disk1/current/EntityDataAll.csv 
-/usr/lib/lily-demo/staging/scripts/data-generate-itx.py -n 6 -o /disk1/current -m /usr/lib/lily-demo/staging/scripts/data-generate-model/
+/usr/lib/lily-demo/staging/scripts/data-generate-itxv3.py -n 6 -o /disk1/current -m /usr/lib/lily-demo/staging/scripts/data-generate-model/
 
 /usr/lib/lily-demo/staging/scripts/data-load-customers.sh   /disk1/current/CrmDataToLoad.csv 
-/usr/lib/lily-demo/staging/scripts/data-load-products.sh /disk1/current/EntityDataAll.csv
+/usr/lib/lily-demo/staging/scripts/data-load-products.sh /disk1/current/EntityDataToLoad.csv
 /usr/lib/lily-demo/staging/scripts/data-load-account.sh  /disk1/current/AccountData.csv 
 /usr/lib/lily-demo/staging/scripts/data-load-account_role.sh /disk1/current/AccountRoleData.csv
 /usr/lib/lily-demo/staging/scripts/data-reload-itx.sh /disk1/current
@@ -43,8 +43,8 @@ scp financial-interactive-staging-v201:/disk1/current/EntityDataAll.csv /Users/d
 # BATCH CALC
 lily dna-entity-batch-calc --dna-entity-type customer_crm --start-date 2009-12-31
 lily master-batch-update-factual --dna-entity-type customer 
-lily set-membership-calc  --dna-entity-type customer --start-date 2016-08-31
-lily dna-set-batch-calc  --dna-entity-type customer --start-date 2016-08-31
+lily set-membership-calc --dna-entity-type customer --start-date 2009-12-31
+lily dna-set-batch-calc --dna-entity-type customer --start-date 2009-12-31
 
 # SHOW LOGFILE
 ssh financial-interactive-staging-v201
