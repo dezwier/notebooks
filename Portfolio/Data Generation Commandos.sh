@@ -9,15 +9,10 @@ git pull
 git checkout DemoCarLoanUseCase2
 git merge master
 
-# DELETE CUSTOMER_PRODUCT
-ssh financial-interactive-staging-v201
-cd /usr/lib/lily-demo/staging/scripts
-./purge-entity-table CUSTOMER_PRODUCT
 
 # DEPLOY
 cd ~/git/lily-demo/financial/deploy/financial_interactive_staging_v2
-fab upload_config upload_scripts
-fab apply_config
+fab upload_config apply_config upload_scripts
 
 # GENERATE AND LOAD DATA
 ssh financial-interactive-staging-v201
@@ -41,10 +36,10 @@ less /disk1/current/EntityDataAll.csv
 scp financial-interactive-staging-v201:/disk1/current/EntityDataAll.csv /Users/desiredewaele/Desktop/
 
 # BATCH CALC
-lily dna-entity-batch-calc --dna-entity-type customer_crm --start-date 2009-12-31
+lily dna-entity-batch-calc --dna-entity-type customer_crm --start-date 2015-12-31
 lily master-batch-update-factual --dna-entity-type customer 
-lily set-membership-calc --dna-entity-type customer --start-date 2009-12-31
-lily dna-set-batch-calc --dna-entity-type customer --start-date 2009-12-31
+lily set-membership-calc --dna-entity-type customer --start-date 2015-12-31
+lily dna-set-batch-calc --dna-entity-type customer --start-date 2015-12-31
 
 # SHOW LOGFILE
 ssh financial-interactive-staging-v201
@@ -54,9 +49,9 @@ cat data-batch-calc.log
 # LOCATIES
 Bash script: ~/git/lily-demo/financial/deploy/sandbox/
 Metrieken:   ~/git/lily-demo/financial/schemas/src/main/resources/dna/campaigndna
-Revised XML:   ~/git/lily-demo/financial/schemas/src/main/resources/dna/customer/definition
-Scripts: ~/git/lily-demo/financial/schemas/src/main/resources/scripts
-Create Data persona: ~/git/lily-demo/financial/schemas/src/main/resources/scripts
+Revised XML:   cd ~/git/lily-demo/financial/schemas/src/main/resources/dna/customer/definition
+Scripts: cd ~/git/lily-demo/financial/schemas/src/main/resources/scripts
+Create Data persona: cd ~/git/lily-demo/financial/schemas/src/main/resources/scripts
 
 # PHOENIX QUERIES
 ssh financial-interactive-staging-v201
@@ -71,3 +66,7 @@ mapred job -kill job_1489733729094_1612
 ssh financial-interactive-staging-v201
 sudo service lily-rest status
 sudo service lily-rest start
+
+# DASHBOARD DELEN
+!outputformat vertical
+select * from lily.settings;
