@@ -1,6 +1,5 @@
 
 
 Tensorflow/text8.zip
-.ipynb_checkpoints/
-Portfolio/.ipynb_checkpoints/*
+*.ipynb_checkpoints/*
 *.DS_Store
