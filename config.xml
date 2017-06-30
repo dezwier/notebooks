@@ -1,0 +1,81 @@
+<group name="crid" cardinality="high">
+    <valueType>string</valueType>
+    <expr for="watching_behavior">itx.programCrid</expr>
+</group>
+
+<itxAggregate name="playMoreEpisodesViewedPerSeriesLast3Months" on="watching_behavior">
+    <filter>itx.reach600Srd==1</filter>
+    <operation inputType="string">countDistinct</operation>
+    <expr>itx.programCrid</expr>
+    <aggregationWindow>90 days</aggregationWindow>
+    <defaultSamplingFrequency>1 day</defaultSamplingFrequency>
+    <defaultQueryWindow>1 week</defaultQueryWindow>
+    <aggregationGranularity>day</aggregationGranularity>
+    <type value="long" groups="crid" />
+    <attributes>
+        <attribute name="label">Play More episodes viewed per show last 3 months</attribute>
+        <attribute name="longlabel">Play More episodes viewed per show last 3 months</attribute>
+        <attribute name="category">Entertainment - viewing habits</attribute>
+        <attribute name="subcategory">Product fit genes</attribute>
+        <attribute name="description">Play More episodes viewed of specific OOC series per show last 3 months</attribute>
+        <attribute name="rangeMin">0</attribute>
+        <attribute name="rangeMax">20</attribute>
+        <attribute name="timeLine">false</attribute>
+    </attributes>
+</itxAggregate>
+
+<itxAggregate name="playMoreLastViewedDatePerSeries" on="watching_behavior">
+    <operation>last</operation>
+    <filter>itx.reach600Srd==1</filter>
+    <expr>itx.timestamp</expr>
+    <aggregationWindow>30 days</aggregationWindow>
+    <defaultSamplingFrequency>1 day</defaultSamplingFrequency>
+    <defaultQueryWindow>1 week</defaultQueryWindow>
+    <aggregationGranularity>day</aggregationGranularity>
+    <type value="long" groups="crid" />
+    <attributes>
+        <attribute name="label">Play More last time viewed per show</attribute>
+        <attribute name="longlabel">Play More last time viewed per show</attribute>
+        <attribute name="category">Entertainment - viewing habits</attribute>
+        <attribute name="subcategory">Product fit genes</attribute>
+        <attribute name="description">Play More last time viewed of specific OOC series per show within last 30 days</attribute>
+    </attributes>
+</itxAggregate>
+
+<itxAggregate name="playMoreWatchedLastEpisodePerSeriesLast3Months" on="watching_behavior">
+    <operation inputType="string">countDistinct</operation>
+    <filter>itx.reach600Srd==1</filter>
+    <expr>itx.programCrid</expr>
+    <aggregationWindow>90 days</aggregationWindow>
+    <defaultSamplingFrequency>1 day</defaultSamplingFrequency>
+    <defaultQueryWindow>1 week</defaultQueryWindow>
+    <aggregationGranularity>day</aggregationGranularity>
+    <type value="long" groups="show" />
+    <attributes>
+        <attribute name="label">Play More customer watched last episode per series L3M</attribute>
+        <attribute name="longlabel">Play More last time viewed per show</attribute>
+        <attribute name="category">Entertainment - viewing habits</attribute>
+        <attribute name="subcategory">Product fit genes</attribute>
+        <attribute name="description">Play More customer watched last episode of specific OOC series per series L3M</attribute>
+    </attributes>
+</itxAggregate>
+
+<scoring name="trigOocPilot">
+    <type value="double" groups="offerId" />
+    <scoringTableName>scoring.series</scoringTableName>
+    <scoringExpressionColumn>seriesExpression</scoringExpressionColumn>
+    <attributes>
+        <attribute name="label">Out of catalog trigger</attribute>
+        <attribute name="longlabel">Out of catalog trigger</attribute>
+        <attribute name="category">Entertainment - viewing habits</attribute>
+        <attribute name="subcategory">Product fit genes</attribute>
+        <attribute name="description">Out of catalog trigger</attribute>
+        <attribute name="timeline">true</attribute>
+        <attribute name="rangeMin">0</attribute>
+        <attribute name="rangeMax">1</attribute>
+    </attributes>
+    <enableVelocityMetrics>false</enableVelocityMetrics>
+    <forceRecalculation>day</forceRecalculation>
+    <defaultValue>0</defaultValue>
+    <hidden>false</hidden>
+</scoring>
