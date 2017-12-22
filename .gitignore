@@ -1,7 +1,3 @@
-
-
-Tensorflow/text8.zip
-*/.DS_Store
-*/checkpoint*
-*/.ipynb_checkpoints/
-*/__pycache__/
+*.DS_Store
+*.ipynb_checkpoints
+*__pycache__
